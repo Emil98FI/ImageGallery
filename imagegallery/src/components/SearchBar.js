@@ -14,6 +14,7 @@ class SearchBar extends React.Component {
   }
 
   handleChange(event) {
+    event.preventDefault()
     const { name, value } = event.target
 
     this.setState({
@@ -22,15 +23,13 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    console.log(this.state.searchValue)
-
     return (
-      <Form onSubmit={this.props.onSearchSubmit}>
-        <Form.Group controlId="Search">
+      <Form onSubmit={this.props.onSubmit}>
+        <Form.Group controlId={this.props.controlId}>
           <Form.Control
-            name="searchValue"
-            value={this.state.searchValue}
-            onChange={this.handleChange}
+            name={this.props.searchValue}
+            value={this.props.searchValue}
+            onChange={this.props.onChange}
             placeholder="Search"
           />
         </Form.Group>
